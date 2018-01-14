@@ -227,7 +227,7 @@ class MinimaxPlayer(IsolationPlayer):
              #   return game.utility(game._active_player)
             if terminal_test(game):
                 #return game.utility(game.active_player)
-                return 1
+                return self.score(game, self)
              
             if depth == 0:
                 return self.score(game, self)
@@ -254,7 +254,7 @@ class MinimaxPlayer(IsolationPlayer):
              #   return game.utility(game._active_player)
             if terminal_test(game):
                 #return game.utility(game.active_player)
-                return -1
+                return self.score(game, self)
             
             if depth == 0:
                 return self.score(game, self)
@@ -401,7 +401,7 @@ class AlphaBetaPlayer(IsolationPlayer):
 
             if terminal_test(game):
                 #return game.utility(game.active_player)
-                return 1
+                return self.score(game, self)
              
             if depth == 0:
                 return self.score(game, self)
@@ -423,7 +423,7 @@ class AlphaBetaPlayer(IsolationPlayer):
 
             if terminal_test(game):
                 #return game.utility(game.active_player)
-                return -1
+                return self.score(game, self)
             
             if depth == 0:
                 return self.score(game, self)
@@ -439,7 +439,7 @@ class AlphaBetaPlayer(IsolationPlayer):
             return best_move_value
 
 
-        #best_score = float("-inf")
+        best_score = float("-inf")
         best_move = None
        
         for m in game.get_legal_moves():
